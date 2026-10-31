@@ -1,0 +1,419 @@
+/* ==========================================================================
+   1. RESET & BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. REUSABLE COMPONENTS (Buttons, Forms, Dividers)
+   ========================================================================== */
+.btn {
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-red {
+    background-color: #e50914;
+    color: #ffffff;
+    padding: 8px 18px;
+    font-size: 0.95rem;
+}
+
+.btn-red:hover {
+    background-color: #c11119;
+}
+
+.btn-lg {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 12px 26px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divider {
+    height: 8px;
+    background-color: #232323;
+    width: 100%;
+}
+
+.cta-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.email-input {
+    flex: 1;
+    min-width: 260px;
+    padding: 14px 18px;
+    font-size: 1rem;
+    color: #ffffff;
+    background: rgba(22, 22, 22, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.email-input:focus {
+    border-color: #ffffff;
+}
+
+/* ==========================================================================
+   3. HERO SECTION (Showcase & Navigation)
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    /* Uses local assets image if available, with CDN fallback */
+    background-image: 
+        radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%),
+        linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.95) 100%),
+        url("assets/img/netflix.jpg"),
+        url("https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-b4e0-7e45d471fa82/60f47d02-5184-4d32-b766-5dd492caadc5/IN-en-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 38px;
+    width: auto;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.language-select {
+    background: rgba(0, 0, 0, 0.65);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 7px 14px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.language-select option {
+    background-color: #111;
+    color: #fff;
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.15;
+}
+
+.hero-content .sub-title {
+    font-size: 1.45rem;
+    margin-bottom: 24px;
+}
+
+.hero-content .cta-description {
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   4. FEATURE SECTIONS (Flexbox Layout & TV/Video Overlays)
+   ========================================================================== */
+.feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 30px;
+    gap: 40px;
+}
+
+.feature-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+.feature-text h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.feature-text p {
+    font-size: 1.35rem;
+    color: #cccccc;
+    line-height: 1.4;
+}
+
+.feature-media {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-media .media-img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+}
+
+/* Video positioned perfectly inside the TV frame */
+.feature-media .tv-video {
+    position: absolute;
+    width: 73%;
+    top: 20.5%;
+    left: 13.5%;
+    z-index: 1;
+}
+
+/* Video positioned perfectly inside multi-device frame */
+.feature-media .devices-video {
+    position: absolute;
+    width: 63%;
+    top: 10%;
+    left: 18.5%;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   5. FAQ ACCORDION SECTION
+   ========================================================================== */
+.faq-section {
+    padding: 70px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.faq-section h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 35px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 45px;
+    text-align: left;
+}
+
+.faq-box {
+    background-color: #2d2d2d;
+    padding: 22px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+
+.faq-box:hover {
+    background-color: #414141;
+}
+
+.faq-icon {
+    font-size: 2.2rem;
+    font-weight: 300;
+    transition: transform 0.25s ease;
+    line-height: 1;
+}
+
+.faq-box.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    background-color: #2d2d2d;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    border-top: 1px solid #111;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: #e5e5e5;
+    padding: 0 28px;
+}
+
+.faq-answer.show {
+    padding: 24px 28px;
+    max-height: 300px;
+}
+
+.faq-cta p {
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+}
+
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+.footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 30px;
+    color: #737373;
+}
+
+.footer-contact {
+    margin-bottom: 28px;
+    font-size: 1rem;
+}
+
+.footer-contact a {
+    color: #737373;
+    text-decoration: underline;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-column a {
+    color: #737373;
+    font-size: 0.88rem;
+    text-decoration: underline;
+}
+
+.footer-country {
+    font-size: 0.88rem;
+}
+
+/* ==========================================================================
+   7. RESPONSIVENESS (Tablets & Mobile Phones)
+   ========================================================================== */
+@media screen and (max-width: 950px) {
+    .feature-item,
+    .feature-item.reverse {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .hero-content h1,
+    .feature-text h2,
+    .faq-section h2 {
+        font-size: 2.3rem;
+    }
+
+    .feature-text p {
+        font-size: 1.15rem;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        padding: 20px 20px;
+    }
+
+    .brand-logo {
+        height: 26px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.85rem;
+    }
+
+    .hero-content .sub-title {
+        font-size: 1.15rem;
+    }
+
+    .faq-box {
+        font-size: 1.1rem;
+        padding: 18px 20px;
+    }
+
+    .cta-form {
+        flex-direction: column;
+    }
+
+    .cta-form .btn-lg {
+        width: 100%;
+        font-size: 1.1rem;
+    }
+}
